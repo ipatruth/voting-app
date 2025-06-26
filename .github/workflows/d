@@ -1,0 +1,26 @@
+name: CI/CD Build a Compose for Voting App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: learn2earn
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Docker Compose plugin
+        run: |
+          sudo mkdir -p ~/.docker/cli-plugins
+          sudo curl -SL https://github.com/docker/compose/releases/download/v2.27.0/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
+          sudo chmod +x ~/.docker/cli-plugins/docker-compose
+          docker compose version
+
+      - name: Deploy with Docker Compose
+        run: sudo docker-compose up -d
+
+
