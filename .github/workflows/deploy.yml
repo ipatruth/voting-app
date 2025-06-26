@@ -13,6 +13,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: deploy
+      - name: Run Checkov security scan
         run: |
-          docker compose  up -d
+          echo "🔍 Running Checkov scan..."
+          checkov -d . --quiet --compact --soft-fail
+
+      - name: Deploy with Docker Compose
+        run: |
+          echo "🚀 Starting Docker Compose deployment"
+          docker compose up -d
