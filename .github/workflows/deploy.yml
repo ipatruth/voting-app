@@ -12,7 +12,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
+      - name: Install Checkov
+        run: pip install checkov --break-system-packages
       - name: Run Checkov security scan
         run: |
           echo "🔍 Running Checkov scan..."
