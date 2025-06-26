@@ -15,11 +15,11 @@ jobs:
 
       - name: Install Docker Compose plugin
         run: |
-          mkdir -p ~/.docker/cli-plugins
-          curl -SL https://github.com/docker/compose/releases/download/v2.27.0/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
-          chmod +x ~/.docker/cli-plugins/docker-compose
+          sudo mkdir -p ~/.docker/cli-plugins
+          sudo curl -SL https://github.com/docker/compose/releases/download/v2.27.0/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
+          sudo chmod +x ~/.docker/cli-plugins/docker-compose
           docker compose version
 
       - name: Deploy with Docker Compose
-        run: docker compose up -d
+        run: sudo docker compose up -d
 
