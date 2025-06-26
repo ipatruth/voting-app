@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: learn2earn
+    runs-on: testing
 
     steps:
       - name: Checkout code
